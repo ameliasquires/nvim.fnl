@@ -26,6 +26,8 @@
   ;floating_mode
   (use! :Iron-E/nvim-libmodal)
 
+  ;fix bracket pairing
+  (use! :monkoose/matchparen.nvim :require :plugins.matchparen)
 
   ;lsp
   (use! :nvim-treesitter/nvim-treesitter :require :plugins.treesitter)
