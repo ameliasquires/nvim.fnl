@@ -1,0 +1,3 @@
+lua/
+plugin/*
+!plugin/0-tangerine.lua
