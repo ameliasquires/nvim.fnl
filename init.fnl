@@ -3,6 +3,7 @@
 (packer-setup! {})
 
 (global settings (require :settings))
+
 (require :keybinds)
 (require :defaults)
 (require :opt)

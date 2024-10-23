@@ -2,7 +2,7 @@
 
 (lambda _get [_ key]
   (local file (io.open (.. path key) :rb))
-  (when (= file nil) nil)
+  (when (= file nil) (lua :return))
 
   (local value (file:read :*a))
   (io.close file)
