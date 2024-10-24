@@ -22,6 +22,17 @@
   (use! :sindrets/winshift.nvim :require :plugins.winshift)
   (use! :rcarriga/nvim-notify :require :plugins.notify)
   (use! :akinsho/toggleterm.nvim :require :plugins.toggleterm)
+ 
+  ;i like this one, just has some issues and isnt that helpful
+  ;(use! :wfxr/minimap.vim)
+  
+  ;make things pretty
+  (use! :nvim-lualine/lualine.nvim :require :lua.lualine)
+  (use! :max397574/startup.nvim :require :plugins.startup)
+  (use! :lewis6991/gitsigns.nvim :require :plugins.gitsigns)
+  
+  ;figure out if i want this one
+  (use! :kwkarlwang/bufresize.nvim :require :plugins.bufresize)
 
   ;floating_mode
   (use! :Iron-E/nvim-libmodal)

@@ -1,3 +1,5 @@
-lua/
+lua/*
+!lua/lua/
+
 plugin/*
 !plugin/0-tangerine.lua

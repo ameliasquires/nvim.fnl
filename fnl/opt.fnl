@@ -11,3 +11,10 @@
 (tset vim.opt :termguicolors true)
 ;--vim.opt.fillchars = { eob = ""}
 (vim.cmd (.. "colorscheme " _G.settings.colorscheme))
+
+(when (= (vim.fn.has :persistent_undo) 1) 
+  (local target_path (vim.fn.expand "~/.undodir"))
+  (when (not= (vim.fn.isdirectory target_path) 1)
+    (vim.fn.mkdir target_path :p 0777))
+  (tset vim.o :undodir target_path)
+  (tset vim.o :undofile true))
