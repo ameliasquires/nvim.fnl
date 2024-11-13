@@ -4,9 +4,11 @@
 
 (global settings (require :settings))
 
-(require :keybinds)
-(require :defaults)
-(require :opt)
+(when (~= (vim.fn.getenv :NVIM_DEBUG) 1)
+  (require :keybinds)
+  (require :defaults)
+  (require :opt))
+
 (local util (require :util))
 (tset _G :util util)
 
