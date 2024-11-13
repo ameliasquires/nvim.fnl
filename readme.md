@@ -31,3 +31,7 @@ the default is "pyright,lua_ls,clangd,zls,csharp_ls,ts_ls,rust_analyzer"
 set with `:lua settings.colorscheme = "colorscheme"`
 
 defaults as "oxocarbon"
+
+## preview
+
+![preview](image.png)
