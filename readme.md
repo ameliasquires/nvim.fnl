@@ -10,6 +10,8 @@ requires
 
 to install, put this repo in ~/.config/nvim, run `NVIM_DEBUG=1 nvim` then run both :PackerInstall and :PackerCompile
 
+if :PackerInstall isnt found, just relaunch `NVIM_DEBUG=1 nvim`
+
 to start out, press space for a window with common commands. try <space>li to setup a normal ide like layout
 
 additionally <Ctrl>f can be used to enter "floating mode"
