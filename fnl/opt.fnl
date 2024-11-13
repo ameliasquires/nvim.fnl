@@ -10,6 +10,15 @@
 (tset vim.o :signcolumn :yes)
 (tset vim.opt :termguicolors true)
 ;--vim.opt.fillchars = { eob = ""}
+
+(when (= _G.settings.trans "enable")
+  (vim.api.nvim_create_autocmd "Colorscheme" {
+    :pattern :*
+    :callback (fn [] 
+      (vim.api.nvim_set_hl 0 :Normal {:bg :none})
+      (vim.api.nvim_set_hl 0 :NormalFloat {:bg :none})
+      (vim.api.nvim_set_hl 0 :FloatBorder {:bg :none}))}))
+
 (vim.cmd (.. "colorscheme " _G.settings.colorscheme))
 
 (when (= (vim.fn.has :persistent_undo) 1) 
