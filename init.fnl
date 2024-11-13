@@ -4,7 +4,7 @@
 
 (global settings (require :settings))
 
-(when (~= (vim.fn.getenv :NVIM_DEBUG) 1)
+(when (~= (vim.fn.getenv :NVIM_DEBUG) :1)
   (require :keybinds)
   (require :defaults)
   (require :opt))
