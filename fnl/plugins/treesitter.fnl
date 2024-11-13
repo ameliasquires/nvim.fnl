@@ -1,3 +1,3 @@
-((. (require :nvim-treesitter.configs) :setup) 
+(_G.util.setup! :nvim-treesitter.configs 
   {:highlight {
     :enable true}})

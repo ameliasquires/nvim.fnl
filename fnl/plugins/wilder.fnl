@@ -1,8 +1,9 @@
+;trans colors :3
 (local gradient [:#74d7ec :#96cde2 :#b9c3d9 :#dcb9d0 :#ffafc7 :#ffafc7 :#fec1d2 :#fdd4de 
   :#fce6e9 :#fbf9f5 :#fbf9f5 :#fce8ea :#fdd7e0 :#fec6d5 :#ffb5cb :#ffb5cb :#dcbdd2 :#b9c5da
   :#96cde2 :#73d5ea])
 
-(local wilder (require :wilder))
+(local wilder (_G.util.require! :wilder))
 (wilder.setup {:modes [:: :/ :?]})
 
 ;this like 'builds' the gradient? idk

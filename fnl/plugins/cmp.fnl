@@ -1,6 +1,6 @@
-(local cmp (require :cmp))
+(local cmp (_G.util.require! :cmp))
 
-((. cmp :setup) {
+(cmp.setup {
   :snippet {
     :expand (fn [args] 
       (vim.snippet.expand args.body)
@@ -16,7 +16,7 @@
   })
   :sources (cmp.config.sources [
     {:name :nvim_lsp}
-    ;{:name :vsnip}
+    {:name :calc} ;to anyone new to this codebase, calc is short for calculator (no clue what this adds, but its funny)
     ] [{:name :buffer}])
   })
 

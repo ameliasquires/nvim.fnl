@@ -1,0 +1,3 @@
+{
+  :type "executable"
+  :command "netcoredbg"}

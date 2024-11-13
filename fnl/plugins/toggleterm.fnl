@@ -1,1 +1,1 @@
-((. (require :toggleterm) :setup) {:persist_mode true :persistant_size true})
+(_G.util.setup! :toggleterm {:persist_mode true :persistant_size true})

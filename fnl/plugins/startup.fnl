@@ -1,2 +1,2 @@
-((. (require :startup) :setup) {
+(_G.util.setup! :startup {
   :theme :evil})

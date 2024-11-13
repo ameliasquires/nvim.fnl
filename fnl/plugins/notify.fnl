@@ -1,1 +1,1 @@
-(tset vim :notify (require :notify))
+(tset vim :notify (_G.util.require! :notify))

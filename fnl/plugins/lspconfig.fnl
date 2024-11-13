@@ -2,7 +2,7 @@
 (set capabilities (capabilities.default_capabilities))
 (local lsp _G.settings.lsp)
 (local config_table {})
-(local lspconfig (require :lspconfig))
+(local lspconfig (_G.util.require! :lspconfig))
 
 (each [language (lsp:gmatch "([^,]+)")]
     (when (= (. config_table language) nil) (tset config_table language {}))
