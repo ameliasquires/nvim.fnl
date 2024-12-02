@@ -11,13 +11,17 @@
 (tset vim.opt :termguicolors true)
 ;--vim.opt.fillchars = { eob = ""}
 
+(local color_change (fn [] 
+      (vim.api.nvim_set_hl 0 :Normal {:bg :none})
+      (vim.api.nvim_set_hl 0 :EndOfBuffer {:bg :none})
+      (vim.api.nvim_set_hl 0 :NormalFloat {:bg :none})
+      (vim.api.nvim_set_hl 0 :FloatBorder {:bg :none})))
+
 (when (= _G.settings.trans "enable")
   (vim.api.nvim_create_autocmd "Colorscheme" {
     :pattern :*
-    :callback (fn [] 
-      (vim.api.nvim_set_hl 0 :Normal {:bg :none})
-      (vim.api.nvim_set_hl 0 :NormalFloat {:bg :none})
-      (vim.api.nvim_set_hl 0 :FloatBorder {:bg :none}))}))
+    :callback color_change})
+  (color_change))
 
 (vim.cmd (.. "colorscheme " _G.settings.colorscheme))
 
@@ -27,3 +31,6 @@
     (vim.fn.mkdir target_path :p 0777))
   (tset vim.o :undodir target_path)
   (tset vim.o :undofile true))
+
+(when (not= _G.settings.layout "")
+  ((require (.. :layouts. _G.settings.layout))))

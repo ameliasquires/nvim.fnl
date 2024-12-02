@@ -13,6 +13,7 @@
   (wmap :t "<cmd>ToggleTerm direction=horizontal<CR>" "hterm")
   (wmap :d "<cmd>Glance references<CR>" "references")
   (wmap :s "<cmd>Telescope live_grep<CR>" "search")
+  (wmap :z "<cmd>Telescope find_files<CR>" "open file")
   (wmap :b "<cmd>JABSOpen<CR>" "buffers")
   (wmap :g (fn []
     (local buffer (vim.fn.expand :%))
@@ -27,10 +28,8 @@
 
   ;;layouts
   (gmap :l "layout")
-  (wmap :li (fn []
-    (vim.cmd "ToggleTerm direction=horizontal")
-    (vim.cmd "Neotree toggle")
-    (vim.cmd "Outline")) "ide")
+  (wmap :li (require :layouts.ide) "ide")
+  (wmap :lq (require :layouts.quiet) "quiet")
 
   ;;visual
   (gmap :v "visual")

@@ -3,6 +3,7 @@
 (packer-setup! {})
 
 (global settings (require :settings))
+(require :settings-ui)
 
 (when (~= (vim.fn.getenv :NVIM_DEBUG) :1)
   (require :keybinds)
@@ -27,7 +28,7 @@
   (use! :rcarriga/nvim-notify :require :plugins.notify)
   (use! :akinsho/toggleterm.nvim :require :plugins.toggleterm)
   (use! :nvim-telescope/telescope.nvim)
-  (use! :matbme/JABS.nvim :config (util.setup! :jabs))
+  (use! :matbme/JABS.nvim :config (util.setup! :jabs {:use_devicons false}))
   (use! :CRAG666/code_runner.nvim :config (util.setup! :code_runner))
   (use! :sindrets/diffview.nvim)
 
@@ -82,6 +83,7 @@
   (use! :williamboman/mason.nvim :config (util.setup! :mason))
 
   ;themes
+  (use! :kepano/flexoki-neovim)
   (use! :kdheepak/monochrome.nvim)
   (use! :nyoom-engineering/oxocarbon.nvim)
   (use! :NTBBloodbath/doom-one.nvim)

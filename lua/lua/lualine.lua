@@ -19,6 +19,10 @@ local colors = {
   red      = '#ec5f67',
 }
 
+if _G.settings.trans == "enable" then
+  colors.bg = "none"
+end
+
 local conditions = {
   buffer_not_empty = function()
     return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
