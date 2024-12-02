@@ -34,6 +34,10 @@ set with `:lua settings.colorscheme = "colorscheme"`
 
 defaults as "oxocarbon"
 
+#### layout
+
+which layout to default to when launching, same name as the which-key selections (view them with <space>l)
+
 ## preview
 
 ![preview](image.png)
