@@ -13,4 +13,11 @@
   (when (~= req nil)
     ((. (M.require! name) :setup) (or ?config {})))))
 
+(tset M :after-setup (lambda [fun]
+  (if (= vim.v.vim_did_enter 1)
+    (fun)
+    (vim.api.nvim_create_autocmd "VimEnter" {
+      :pattern :*
+      :callback fun}))))
+
 M

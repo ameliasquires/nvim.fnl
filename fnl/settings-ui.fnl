@@ -1,6 +1,8 @@
 (local options {
   :colorscheme {:array false :options [:oxocarbon :monochrome :doom-one]}
-  :lsp {:array true}})
+  :lsp {:array true}
+  :layout {:array false :options [:ide :quiet]}
+  :trans {:array false :options [:enable :disable]}})
 
 (local options_k {})
 (each [k v (pairs options)] (table.insert options_k k))
@@ -27,7 +29,26 @@
   (var string "")
   (each [_ a (pairs arr)]
     (set string (.. string "," a)))
-  string)
+  (string:sub 2))
+
+(lambda nothing-if-false [bool _str]
+  (var str "")
+  (when bool (set str _str))
+  str)
+
+(lambda nothing-if-nil [_str ...]
+  (var str "")
+  (when (not= _str nil) (set str (.. _str ...)))
+  str)
+
+(lambda rem [oarr item]
+  (var arr [])
+  (each [_ a (pairs oarr)]
+    (print item a)
+    (when (not= item a)
+      (table.insert arr a)))
+  arr)
+
 
 (vim.api.nvim_create_user_command "Settings"
   (fn [opts]
@@ -37,8 +58,10 @@
       (where n (= n "add")) (set action 1)
       (where n (= n "remove")) (set action 2))
     
-    (when (= action 0) (tset _G.settings option (.. item " " rest)))
-    (when (= action 1) (tset _G.settings option (.. (. _G.settings option) rest)))
+    (set rest (trim rest))
+    (when (= action 0) (tset _G.settings option (.. item (nothing-if-false (not= rest "") (.. " " rest)))))
+    (when (= action 1) (tset _G.settings option (.. (nothing-if-nil (?. _G.settings option) ",") rest)))
+    (when (= action 2) (tset _G.settings option (tarray (rem (carray (. _G.settings option)) rest))))
     )
   {:nargs 1 :complete (fn [arglead cmdline]
     (local parsed [])
@@ -49,7 +72,7 @@
     (case (# parsed)
       (where n (= n 2)) (startswith options_k arglead)
       (where n (and (= n 3) (?. options (. parsed 2) :array))) (startswith [:add :remove] arglead)
-      (where n (and (= n 4) (?. options (. parsed 2) :array) (= (. parsed 3) :remove))) (startswith (carray (. _G.settings (. parsed 2))) arglead)
+      (where n (and (= n 4) (= (. parsed 3) :remove))) (startswith (carray (. _G.settings (. parsed 2))) arglead)
 
       (where n (and (>= n 3) (?. options (. parsed 2) :options)))
         ;only one for now, not sure what else i would add besides functions
