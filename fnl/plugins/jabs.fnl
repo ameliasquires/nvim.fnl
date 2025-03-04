@@ -1,4 +1,3 @@
-(print "hi")
 (_G.util.setup! :jabs {:use_devicons false
   :keymap {:close :x}
   :symbols {
