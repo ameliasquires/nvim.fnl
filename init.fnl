@@ -3,12 +3,13 @@
 (packer-setup! {})
 
 (global settings (require :settings))
-(require :settings-ui)
 
 (when (~= (vim.fn.getenv :NVIM_DEBUG) :1)
   (require :keybinds)
   (require :defaults)
-  (require :opt))
+  (global opt (require :opt)))
+
+(require :settings-ui)
 
 (local util (require :util))
 (tset _G :util util)
@@ -25,10 +26,10 @@
     :depends [:nvim-lua/plenary.nvim :nvim-tree/nvim-web-devicons
       :MunifTanjim/nui.nvim :3rd/image.nvim])
   (use! :sindrets/winshift.nvim :config (util.setup! :winshift))
-  (use! :rcarriga/nvim-notify :require :plugins.notify)
+  (use! :rcarriga/nvim-notify :config (util.setup! :notify {:background_colour "#000000"}))
   (use! :akinsho/toggleterm.nvim :require :plugins.toggleterm)
   (use! :nvim-telescope/telescope.nvim)
-  (use! :matbme/JABS.nvim :config (util.setup! :jabs {:use_devicons false}))
+  (use! :matbme/JABS.nvim :require :plugins.jabs)
   (use! :CRAG666/code_runner.nvim :config (util.setup! :code_runner))
   (use! :sindrets/diffview.nvim)
 
@@ -54,7 +55,7 @@
   ;(use! :wfxr/minimap.vim)
   
   ;make things pretty
-  (use! :nvim-lualine/lualine.nvim :require :lua.lualine)
+  (use! :nvim-lualine/lualine.nvim :require :plugins.lualine)
   (use! :max397574/startup.nvim :require :plugins.startup)
   (use! :lewis6991/gitsigns.nvim :config (util.setup! :gitsigns))
   (use! :stevearc/dressing.nvim :require :plugins.dressing)

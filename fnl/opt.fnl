@@ -14,17 +14,38 @@
 ;--vim.opt.fillchars = { eob = ""}
 
 (local color_change (fn [] 
-      (vim.api.nvim_set_hl 0 :Normal {:bg :none})
+      ;havent found how to make toggleterm to work, it wont switch until you select the window
+      ;possible bug with toggleterm?
+      (vim.api.nvim_set_hl 0 :Normal {:bg :none :fg :none})
       (vim.api.nvim_set_hl 0 :SignColumn {:bg :none})
       (vim.api.nvim_set_hl 0 :EndOfBuffer {:bg :none})
       (vim.api.nvim_set_hl 0 :NormalFloat {:bg :none})
-      (vim.api.nvim_set_hl 0 :FloatBorder {:bg :none})))
+      (vim.api.nvim_set_hl 0 :FloatBorder {:bg :none})
+      (vim.api.nvim_set_hl 0 :NvimTreeNormal {:bg :none})
+      (vim.api.nvim_set_hl 0 :NormalNC {:bg :none})
+      (vim.api.nvim_set_hl 0 :TermCursor {:bg :none})
+      (vim.api.nvim_set_hl 0 :TermCursorNC {:bg :none})
+      (vim.api.nvim_set_hl 0 :VertSplit {:bg :none})
+      (vim.api.nvim_set_hl 0 :LineNr {:bg :none})
+      (vim.api.nvim_set_hl 0 :StatusLine {:bg :none})))
 
-(when (= _G.settings.trans "enable")
+(global _trans_ false)
+
+(fn trans-disable []
+  (global _trans_ false)
+  (vim.api.nvim_clear_autocmds {:event :Colorscheme})
+  (vim.cmd (.. "colorscheme " _G.settings.colorscheme)))
+
+(fn trans-enable []
+  (global _trans_ true)
   (vim.api.nvim_create_autocmd "Colorscheme" {
     :pattern :*
     :callback color_change})
-  (color_change))
+  (color_change)
+  (vim.cmd (.. "colorscheme " _G.settings.colorscheme)))
+
+(when (= _G.settings.trans "enable")
+  (trans-enable))
 
 (vim.cmd (.. "colorscheme " _G.settings.colorscheme))
 
@@ -35,5 +56,9 @@
   (tset vim.o :undodir target_path)
   (tset vim.o :undofile true))
 
-(when (not= _G.settings.layout "")
-  (util.after-setup (require (.. :layouts. _G.settings.layout))))
+(tset _G :current_layout "")
+(when (and (not= _G.settings.layout "") (not= _G.settings.layout "none"))
+  (util.after-setup (. (require (.. :layouts. _G.settings.layout)) :enable))
+  (tset _G :current_layout _G.settings.layout))
+
+{:trans-disable trans-disable :trans-enable trans-enable}

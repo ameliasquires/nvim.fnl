@@ -1,8 +1,12 @@
+(fn update-layout [new old]
+  (when (and (not= old "") (not= old "none")) ((. (require (.. :layouts. old)) :disable)))
+  (when (and (not= new "") (not= new "none")) ((. (require (.. :layouts. new)) :enable))))
+
 (local options {
-  :colorscheme {:array false :options [:oxocarbon :monochrome :doom-one]}
+  :colorscheme {:array false :options [:oxocarbon :monochrome :doom-one] :update (fn [color] (vim.cmd (.. "colorscheme " color)))}
   :lsp {:array true}
-  :layout {:array false :options [:ide :quiet]}
-  :trans {:array false :options [:enable :disable]}})
+  :layout {:array false :options [:ide :quiet] :update (fn [layout] (update-layout layout _G.settings.layout))}
+  :trans {:array false :options [:enable :disable] :update (fn [en] ((. _G.opt (.. :trans- en))))}})
 
 (local options_k {})
 (each [k v (pairs options)] (table.insert options_k k))
@@ -59,6 +63,10 @@
       (where n (= n "remove")) (set action 2))
     
     (set rest (trim rest))
+    
+    ;call update before so the function can know the previous value
+    (when (and (not= (. options option) nil) (not= (. options option :update) nil)) ((. options option :update) item rest))
+
     (when (= action 0) (tset _G.settings option (.. item (nothing-if-false (not= rest "") (.. " " rest)))))
     (when (= action 1) (tset _G.settings option (.. (nothing-if-nil (?. _G.settings option) ",") rest)))
     (when (= action 2) (tset _G.settings option (tarray (rem (carray (. _G.settings option)) rest))))

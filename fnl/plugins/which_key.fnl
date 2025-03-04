@@ -6,6 +6,12 @@
 (macro gmap [k group]
   {1 (.. " " k) :group group})
 
+(fn swap-layout [new]
+  (_G.loaded.edgy.goto_main)
+  (when (not= _G.current_layout "") ((. (require (.. :layouts. _G.current_layout)) :disable)))
+  (when (not= new "") ((. (require (.. :layouts. new)) :enable)))
+  (tset _G :current_layout new))
+
 (local mappings [
   ;;common
   (wmap :f "<cmd>Neotree toggle<CR>" "fs")
@@ -28,8 +34,11 @@
 
   ;;layouts
   (gmap :l "layout")
-  (wmap :li (require :layouts.ide) "ide")
-  (wmap :lq (require :layouts.quiet) "quiet")
+  (wmap :li (fn [] (swap-layout :ide)) "ide")
+  (wmap :lq (fn [] (swap-layout :quiet)) "quiet")
+  (wmap :lw (fn [] (swap-layout :writing)) "writing")
+  (wmap :lx (fn [] (swap-layout "")) "none")
+
 
   ;;visual
   (gmap :v "visual")
@@ -40,9 +49,14 @@
   (gmap :q "quick")
   (wmap :qs "\"+y" "system grab")
   (wmap :ql "0v$" "line")
+  (wmap :qw "^v$" "line w/out whitespace")
+  (wmap :qa "0ggvG$" "select all")
   (wmap :qr "<cmd>SnipRun<CR>" "run highlighted")
   (wmap :qf "<cmd>RunFile<CR>" "run file")
   (wmap :qe "<cmd>RunCode<CR>" "run code")
+  (wmap :qt (fn []
+    (if _G._trans_ (_G.opt.trans-disable)
+        (_G.opt.trans-enable)) ) "toggle trans")
   ])
 
 (tset mappings :mode [:n :v])
