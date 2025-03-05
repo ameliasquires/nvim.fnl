@@ -16,18 +16,13 @@
 (local color_change (fn [] 
       ;havent found how to make toggleterm to work, it wont switch until you select the window
       ;possible bug with toggleterm?
-      (vim.api.nvim_set_hl 0 :Normal {:bg :none :fg :none})
-      (vim.api.nvim_set_hl 0 :SignColumn {:bg :none})
-      (vim.api.nvim_set_hl 0 :EndOfBuffer {:bg :none})
-      (vim.api.nvim_set_hl 0 :NormalFloat {:bg :none})
-      (vim.api.nvim_set_hl 0 :FloatBorder {:bg :none})
-      (vim.api.nvim_set_hl 0 :NvimTreeNormal {:bg :none})
-      (vim.api.nvim_set_hl 0 :NormalNC {:bg :none})
-      (vim.api.nvim_set_hl 0 :TermCursor {:bg :none})
-      (vim.api.nvim_set_hl 0 :TermCursorNC {:bg :none})
-      (vim.api.nvim_set_hl 0 :VertSplit {:bg :none})
-      (vim.api.nvim_set_hl 0 :LineNr {:bg :none})
-      (vim.api.nvim_set_hl 0 :StatusLine {:bg :none})))
+      (local groups [:Normal :NormalNC :Comment :Constant :Special :Identifier
+                  :Statement :PreProc :Type :Underlined :Todo :String :Function
+                  :Conditional :Repeat :Operator :Structure :LineNr :NonText
+                  :SignColumn :CursorLine :CursorLineNr :StatusLine :StatusLineNC
+                  :EndOfBuffer :NormalFloat :FloatBorder :NvimTreeNormal :TermCursor :TermCursorNC])
+      (each [_ v (pairs groups)]
+        (vim.api.nvim_set_hl 0 v {:bg :none :fg :none}))))
 
 (global _trans_ false)
 

@@ -66,10 +66,7 @@
 
 (_G.util.setup! :lualine {
   :options {
-    :theme {
-      :normal { :c {:bg colors.bg}} 
-      :inactive { :c {:bg colors.fade-bg}} 
-    }
+    :theme :auto
     :component_separators { :left "" :right "" }                         
     :section_separators { :left "" :right  "" }
   }

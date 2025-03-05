@@ -88,4 +88,5 @@
   (use! :kdheepak/monochrome.nvim)
   (use! :nyoom-engineering/oxocarbon.nvim)
   (use! :NTBBloodbath/doom-one.nvim)
+  (use! :EdenEast/nightfox.nvim)
 )

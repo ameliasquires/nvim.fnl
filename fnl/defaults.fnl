@@ -3,7 +3,7 @@
 
 (global defaults (lambda [force]
   (default :layout "" force)
-  (default :colorscheme :oxocarbon force)
+  (default :colorscheme :carbonfox force)
   (default :lsp "pyright,lua_ls,clangd,zls,csharp_ls,ts_ls,rust_analyzer" force)))
 
 (defaults false)
