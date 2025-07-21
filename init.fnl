@@ -32,6 +32,7 @@
   (use! :matbme/JABS.nvim :require :plugins.jabs)
   (use! :CRAG666/code_runner.nvim :config (util.setup! :code_runner))
   (use! :sindrets/diffview.nvim)
+  (use! :luukvbaal/nnn.nvim :config (util.setup! :nnn {:picker {:fullscreen false}}))
 
   ;introduces too many erros:p cool otherwise, might find an altern--mostly covered by outline
   ;(use! :code-biscuits/nvim-biscuits :config (util.setup! :nvim-biscuits))
@@ -55,6 +56,7 @@
   ;(use! :wfxr/minimap.vim)
   
   ;make things pretty
+  (use! :rachartier/tiny-inline-diagnostic.nvim :config (util.setup! :tiny-inline-diagnostic {:preset :minimal :signs {:arrow "  > "} :hi {:background ""} :options {:multilines {:enabled true}}}))
   (use! :nvim-lualine/lualine.nvim :require :plugins.lualine)
   (use! :max397574/startup.nvim :require :plugins.startup)
   (use! :lewis6991/gitsigns.nvim :config (util.setup! :gitsigns))
