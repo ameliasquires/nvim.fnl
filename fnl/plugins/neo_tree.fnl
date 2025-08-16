@@ -15,7 +15,6 @@
         :staged " "
         :conflict ":("}}}
   :window {
-    :position :left
     :width 30}
   :filesystem {
     :use_libuv_file_watcher true}})

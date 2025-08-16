@@ -14,12 +14,12 @@
 
 (local mappings [
   ;;common
-  (wmap :f "<cmd>Neotree toggle<CR>" "fs")
+  (wmap :f "<cmd>Neotree position=left toggle<CR>" "fs")
   (wmap :w "<cmd>WinShift<CR>" "win shift")
   (wmap :t "<cmd>ToggleTerm direction=horizontal<CR>" "hterm")
   (wmap :d "<cmd>Glance references<CR>" "references")
   (wmap :s "<cmd>Telescope live_grep<CR>" "search")
-  (wmap :z "<cmd>Telescope find_files<CR>" "open file")
+  (wmap :z "<cmd>Oil --float<CR> toggle" "open file")
   (wmap :b "<cmd>JABSOpen<CR>" "buffers")
   (wmap :g (fn []
     (local buffer (vim.fn.expand :%))

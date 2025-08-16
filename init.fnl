@@ -32,7 +32,9 @@
   (use! :matbme/JABS.nvim :require :plugins.jabs)
   (use! :CRAG666/code_runner.nvim :config (util.setup! :code_runner))
   (use! :sindrets/diffview.nvim)
-  (use! :luukvbaal/nnn.nvim :config (util.setup! :nnn {:picker {:fullscreen false}}))
+  (use! :stevearc/oil.nvim :config (util.setup! :oil))
+  ;use this to disable preview-tui
+  ;(use! :luukvbaal/nnn.nvim :config (util.setup! :nnn {:offset true :picker {:fullscreen false}}))
 
   ;introduces too many erros:p cool otherwise, might find an altern--mostly covered by outline
   ;(use! :code-biscuits/nvim-biscuits :config (util.setup! :nvim-biscuits))
