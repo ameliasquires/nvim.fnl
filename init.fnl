@@ -82,8 +82,7 @@
   ;lsp
   (use! :nvim-treesitter/nvim-treesitter :require :plugins.treesitter)
   (use! :ray-x/lsp_signature.nvim :config (util.setup! :lsp_signature))
-  (use! :hrsh7th/cmp-nvim-lsp)
-  (use! :hrsh7th/nvim-cmp :require :plugins.cmp)
+  (use! :saghen/blink.cmp :require :plugins.blink)
   (use! :neovim/nvim-lspconfig :require :plugins.lspconfig)
   (use! :williamboman/mason.nvim :config (util.setup! :mason))
 

@@ -1,9 +1,10 @@
-(var capabilities (require :cmp_nvim_lsp))
-(set capabilities (capabilities.default_capabilities))
+(var capabilities (require :blink.cmp))
+(set capabilities (capabilities.get_lsp_capabilities))
+
 (local lsp _G.settings.lsp)
 (local config_table {
   :lua_ls {:settings {:Lua {:diagnostics {:disable
-    ["lowercase-global" "trailing-space" "unused-local"]}}}}
+    ["lowercase-global" "trailing-space"]}}}}
   })
 (local lspconfig (_G.util.require! :lspconfig))
 
