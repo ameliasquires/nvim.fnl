@@ -83,6 +83,7 @@
   (use! :nvim-treesitter/nvim-treesitter :require :plugins.treesitter)
   (use! :ray-x/lsp_signature.nvim :config (util.setup! :lsp_signature))
   (use! :saghen/blink.cmp :require :plugins.blink)
+    (use! :xzbdmw/colorful-menu.nvim :config (util.setup! :colorful-menu {:max_width 45}))
   (use! :neovim/nvim-lspconfig :require :plugins.lspconfig)
   (use! :williamboman/mason.nvim :config (util.setup! :mason))
 
