@@ -19,7 +19,7 @@
   (wmap :t "<cmd>ToggleTerm direction=horizontal<CR>" "hterm")
   (wmap :d "<cmd>Glance references<CR>" "references")
   (wmap :s "<cmd>Telescope live_grep<CR>" "search")
-  (wmap :z "<cmd>Oil --float<CR> toggle" "open file")
+  (wmap :z "<cmd>lua require('oil').toggle_float()<CR>" "open file")
   (wmap :b "<cmd>JABSOpen<CR>" "buffers")
   (wmap :g (fn []
     (local buffer (vim.fn.expand :%))
