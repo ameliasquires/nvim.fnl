@@ -3,7 +3,7 @@
   (when (and (not= new "") (not= new "none")) ((. (require (.. :layouts. new)) :enable))))
 
 (local options {
-  :colorscheme {:array false :options [:oxocarbon :monochrome :doom-one :dayfox :nightfox :carbonfox :duskfox] :update (fn [color] (vim.cmd (.. "colorscheme " color)))}
+  :colorscheme {:array false :options [:sakura :oxocarbon :monochrome :doom-one :dayfox :nightfox :carbonfox :duskfox] :update (fn [color] (vim.cmd (.. "colorscheme " color)))}
   :lsp {:array true}
   :layout {:array false :options [:ide :quiet] :update (fn [layout] (update-layout layout _G.settings.layout))}
   :trans {:array false :options [:enable :disable] :update (fn [en] ((. _G.opt (.. :trans- en))))}})

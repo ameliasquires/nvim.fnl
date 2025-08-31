@@ -16,9 +16,7 @@
 (local color_change (fn [] 
       ;havent found how to make toggleterm to work, it wont switch until you select the window
       ;possible bug with toggleterm?
-      (local groups [:Normal :NormalNC :Comment :Constant :Special :Identifier
-                  :Statement :PreProc :Type :Underlined :Todo :String :Function
-                  :Conditional :Repeat :Operator :Structure :LineNr :NonText
+      (local groups [:Normal :NormalNC :PreProc :Repeat :LineNr :NonText
                   :SignColumn :CursorLine :CursorLineNr :StatusLine :StatusLineNC
                   :EndOfBuffer :NormalFloat :FloatBorder :NvimTreeNormal :TermCursor :TermCursorNC])
       (each [_ v (pairs groups)]

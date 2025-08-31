@@ -32,12 +32,13 @@
   (use! :matbme/JABS.nvim :require :plugins.jabs)
   (use! :CRAG666/code_runner.nvim :config (util.setup! :code_runner))
   (use! :sindrets/diffview.nvim)
-  (use! :stevearc/oil.nvim :config (util.setup! :oil))
+  (use! :stevearc/oil.nvim :depends [:benomahony/oil-git.nvim] :require :plugins.oil)
   ;use this to disable preview-tui
   ;(use! :luukvbaal/nnn.nvim :config (util.setup! :nnn {:offset true :picker {:fullscreen false}}))
 
   ;introduces too many erros:p cool otherwise, might find an altern--mostly covered by outline
-  ;(use! :code-biscuits/nvim-biscuits :config (util.setup! :nvim-biscuits))
+  ;^ want to try it again
+  (use! :code-biscuits/nvim-biscuits :config (util.setup! :nvim-biscuits {:cursor_line_only true}))
 
   (use! :michaelb/sniprun :run "sh ./install.sh" :require :plugins.sniprun)
   (use! :DNLHC/glance.nvim :config (util.setup! :glance))
@@ -81,13 +82,17 @@
 
   ;lsp
   (use! :nvim-treesitter/nvim-treesitter :require :plugins.treesitter)
-  (use! :ray-x/lsp_signature.nvim :config (util.setup! :lsp_signature))
+  ;switch to the blink native one at some point
+  (use! :ray-x/lsp_signature.nvim :config (util.setup! :lsp_signature {:hint_enable false}))
   (use! :saghen/blink.cmp :require :plugins.blink)
     (use! :xzbdmw/colorful-menu.nvim :config (util.setup! :colorful-menu {:max_width 45}))
   (use! :neovim/nvim-lspconfig :require :plugins.lspconfig)
   (use! :williamboman/mason.nvim :config (util.setup! :mason))
 
   ;themes
+  (use! :rktjmp/lush.nvim)
+
+  (use! :anAcc22/sakura.nvim)
   (use! :kepano/flexoki-neovim)
   (use! :kdheepak/monochrome.nvim)
   (use! :nyoom-engineering/oxocarbon.nvim)
